@@ -1,17 +1,23 @@
 class Solution {
-    public int findNumbers(int[] nums){
-        int result=0;
-        for(int i=0;i<nums.length;i++){
-            int count=0;
-            while(nums[i]>0){
-                int rem=nums[i]%10;
+    private boolean countdigits(int nums){
+        int count=0;
+          while(nums>0){
+                int rem=nums%10;
                 count++;
-                nums[i]=nums[i]/10;
+                nums=nums/10;
             }
             if(count%2==0){
-                result++;
+                return true;
             }
-        }
-            return result;
+            return false;
     }
-}
+    public int findNumbers(int[] nums){
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            if(countdigits(nums[i])){
+                count++;
+                }
+            }
+            return count;
+    }
+    }

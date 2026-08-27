@@ -21,7 +21,7 @@ class Solution {
     //    }
     //    }
     //    return new ArrayList<>(result);
-    Set<List<Integer>>result=new HashSet<>();
+    HashSet<List<Integer>>result=new HashSet<>();
     Arrays.sort(nums);
     for(int i=0;i<nums.length;i++){
         int first=i+1;

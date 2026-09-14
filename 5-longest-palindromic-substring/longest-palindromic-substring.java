@@ -3,23 +3,25 @@ public class Solution {
         if (s.length() <= 1) {
             return s;
         }
-       String result="";
+
+        int maxLen = 1;
+        String maxStr = s.substring(0, 1);
 
         for (int i = 0; i < s.length(); i++) {
-            for(int j=i;j<s.length();j++){
-                if(isPalindrome(s,i,j)&&result.length()<j-i+1){
-                    result=s.substring(i,j+1);
+            for (int j = i + maxLen; j <= s.length(); j++) {
+                if (j - i > maxLen && isPalindrome(s.substring(i, j))) {
+                    maxLen = j - i;
+                    maxStr = s.substring(i, j);
                 }
-
             }
         }
 
-        return result;
+        return maxStr;
     }
 
-    private boolean isPalindrome(String str,int i,int j) {
-        int left = i;
-        int right = j;
+    private boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
 
         while (left < right) {
             if (str.charAt(left) != str.charAt(right)) {

@@ -1,19 +1,14 @@
 class Solution {
     public int reverse(int n) {
+        int b=n;
         int rev=0;
-        int rem;
         while(n!=0){
-            rem=n%10;
-            if(rev>Integer.MAX_VALUE/10||rev<Integer.MIN_VALUE/10){
-            return 0;
-            }
-         rev=rev*10+rem;
-        n=n/10;
-            
-         /*  else if(rev<Integer.MIN_VALUE/10||rev==Integer.MIN_VALUE/10&&rem<-8){
+            int rem=n%10;
+            if(rev<Integer.MIN_VALUE/10||rev>Integer.MAX_VALUE/10){
                 return 0;
-            }*/
-
+            }
+            rev=rev*10+rem;
+            n=n/10;
         }
         return rev;
     }

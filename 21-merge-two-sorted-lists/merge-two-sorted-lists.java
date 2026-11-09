@@ -10,8 +10,8 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode dummyhead=new ListNode();
-        ListNode ans=dummyhead;
+        ListNode dummyHead=new ListNode();
+        ListNode ans=dummyHead;
         while(list1!=null&&list2!=null){
             if(list1.val<=list2.val){
                 ans.next=list1;
@@ -20,22 +20,21 @@ class Solution {
             }
             else{
                 ans.next=list2;
+               ans= ans.next;
                 list2=list2.next;
-                ans=ans.next;
             }
         }
         while(list1!=null){
-            ans.next=list1;
-            list1=list1.next;
-            ans=ans.next;
-        }
+                ans.next=list1;
+                ans=ans.next;
+                list1=list1.next;
+            }
         while(list2!=null){
-            ans.next=list2;
-            list2=list2.next;
-            ans=ans.next;
+                ans.next=list2;
+               ans=ans.next;
+                list2=list2.next;
         }
-    
 
-            return  dummyhead.next;
+    return dummyHead.next ;
     }
 }

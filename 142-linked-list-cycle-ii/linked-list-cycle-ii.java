@@ -31,7 +31,7 @@ public class Solution {
     break;
   }
     }
-    if(slow!=fast){
+    if(fast==null||fast.next==null){
         return null;
     }
     ListNode p=head;

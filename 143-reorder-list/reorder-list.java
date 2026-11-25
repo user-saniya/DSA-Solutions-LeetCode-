@@ -13,23 +13,52 @@ class Solution {
         ListNode slow=head;
         ListNode fast=head;
         //bruteForce 
-        ArrayList<ListNode>list=new ArrayList<>();
+        // ArrayList<ListNode>list=new ArrayList<>();
         ListNode temp=head;
-        while(temp!=null){
-            list.add(temp);
-            temp=temp.next;
+        // while(temp!=null){
+        //     list.add(temp);
+        //     temp=temp.next;
+        // }
+        // int low=0;
+        // int high=list.size()-1;
+        // while(low<high){
+        //     list.get(low).next=list.get(high);
+        //     low++;
+        //     if(low==high){
+        //         break;
+        //     }
+        //     list.get(high).next=list.get(low);
+        //     high--;
+        // }
+        // list.get(high).next=null;
+        //optimized
+
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
         }
-        int low=0;
-        int high=list.size()-1;
-        while(low<high){
-            list.get(low).next=list.get(high);
-            low++;
-            if(low==high){
-                break;
-            }
-            list.get(high).next=list.get(low);
-            high--;
+        ListNode prev=null;
+        ListNode p=slow.next;
+        slow.next=null;
+        while(p!=null){
+            ListNode next=p.next;
+            p.next=prev;
+            prev=p;
+            p=next;
         }
-        list.get(high).next=null;
+        slow.next=prev;
+        slow.next=null;
+
+while (prev != null) {
+
+    ListNode next1 = temp.next;
+    ListNode next2 = prev.next;
+
+    temp.next = prev;
+    prev.next = next1;
+
+    temp = next1;
+    prev = next2;
+}
     }
 }
